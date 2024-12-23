@@ -6,8 +6,10 @@ import * as motion from 'motion/react-client'
 import { useAnimate } from 'motion/react'
 import { Button } from '@/components/ui/button'
 import NumberFlow from '@number-flow/react'
-import { Minus, Plus } from 'lucide-react'
+import { Minus, Plus, Volume2, VolumeX } from 'lucide-react'
 import ButtonGroup from '@/components/button-group'
+import { Switch } from '@/components/ui/switch'
+// import { Label } from '@/components/ui/label'
 
 export default function Home() {
 	const defaultTime = 5
@@ -18,7 +20,8 @@ export default function Home() {
 	const intervalRef = useRef(null)
 	const startTimeRef = useRef(null)
 	const [scope, animate] = useAnimate()
-	const [lastTick, setLastTick] = useState(time)
+	const [playSounds, setPlaySounds] = useState(true)
+	// const [lastTick, setLastTick] = useState(time)
 
 	const getCurrentSecond = () => {
 		const currentTimeLeft = Math.max(
@@ -50,7 +53,7 @@ export default function Home() {
 				if (currentSecond >= 1) {
 					playTickSound()
 				}
-				setLastTick(currentSecond)
+				// setLastTick(currentSecond)
 			}, 1000)
 		}
 	}
@@ -68,7 +71,7 @@ export default function Home() {
 	const resetTimer = () => {
 		clearInterval(intervalRef.current)
 		setIsRunning(false)
-		updateTime(defaultTime)
+		updateTime(time)
 		animate(
 			scope.current,
 			{ pathLength: 1 },
@@ -104,16 +107,45 @@ export default function Home() {
 
 	const playTickSound = () => {
 		const audio = new Audio('/sounds/tick2.mp3')
-		audio.play()
+		playSounds ? audio.play() : null
 	}
 
 	const timerComplete = () => {
 		const audio = new Audio('/sounds/complete.mp3')
-		audio.play()
+		playSounds ? audio.play() : null
+
+		setTimeout(() => {
+			updateTime(time)
+		}, 1000)
 	}
 
 	return (
 		<div className='grid grid-rows-[20px_1fr_20px] bg-background items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
+			<h1 className='text-3xl font-bold'>Simple Timer</h1>
+			<div className='absolute flex items-center gap-2 right-[70px] top-5'>
+				{/* <Label htmlFor='sound-effects' className='w-[80px]'>
+					Sounds {playSounds ? 'On' : 'Off'}
+				</Label> */}
+				{playSounds ? (
+					<Volume2
+						size={20}
+						className='text-foreground z-10'
+						aria-hidden={playSounds}
+					/>
+				) : (
+					<VolumeX
+						size={20}
+						className='text-foreground z-10'
+						aria-hidden={!playSounds}
+					/>
+				)}
+				<Switch
+					id='sound-effects'
+					checked={playSounds}
+					onCheckedChange={() => setPlaySounds(!playSounds)}
+					disabled={isRunning}
+				/>
+			</div>
 			<main className='flex flex-col gap-8 row-start-2 items-center justify-center bg-secondary/40 px-8 pt-16 pb-8 rounded-2xl border border-primary/10 shadow-xl'>
 				<div className='flex items-center gap-8 bg-background rounded-full'>
 					<motion.div
