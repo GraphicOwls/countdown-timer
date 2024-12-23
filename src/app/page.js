@@ -6,7 +6,7 @@ import * as motion from 'motion/react-client'
 import { useAnimate } from 'motion/react'
 import { Button } from '@/components/ui/button'
 import NumberFlow from '@number-flow/react'
-import { Minus, Plus, RotateCcw, Undo } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import ButtonGroup from '@/components/button-group'
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
 	const intervalRef = useRef(null)
 	const startTimeRef = useRef(null)
 	const [scope, animate] = useAnimate()
-	const [lastTick, setLastTick] = useState(time) // State for last tick
+	const [lastTick, setLastTick] = useState(time)
 
 	const getCurrentSecond = () => {
 		const currentTimeLeft = Math.max(
@@ -41,7 +41,6 @@ export default function Home() {
 
 			intervalRef.current = setInterval(() => {
 				const currentSecond = getCurrentSecond()
-				console.log('Current Second:', currentSecond)
 				if (currentSecond <= 0) {
 					clearInterval(intervalRef.current)
 					setIsRunning(false)
@@ -49,7 +48,7 @@ export default function Home() {
 				}
 				setTimeRemaining(currentSecond)
 				if (currentSecond >= 1) {
-					playTickSound() // Pass current second to playTickSound
+					playTickSound()
 				}
 				setLastTick(currentSecond)
 			}, 1000)
@@ -59,7 +58,6 @@ export default function Home() {
 	const pauseTimer = () => {
 		clearInterval(intervalRef.current)
 		setIsRunning(false)
-		// Animate to current progress instantly
 		animate(
 			scope.current,
 			{ pathLength: timeRemaining / time },
@@ -71,7 +69,6 @@ export default function Home() {
 		clearInterval(intervalRef.current)
 		setIsRunning(false)
 		updateTime(defaultTime)
-		// Animate back to full
 		animate(
 			scope.current,
 			{ pathLength: 1 },
@@ -111,12 +108,9 @@ export default function Home() {
 	}
 
 	const timerComplete = () => {
-		console.log('Timer complete!')
-		// Play sound
 		const audio = new Audio('/sounds/complete.mp3')
 		audio.play()
 	}
-	// https://cdn.pixabay.com/audio/2024/02/19/audio_e4043ea6be.mp3
 
 	return (
 		<div className='grid grid-rows-[20px_1fr_20px] bg-background items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
