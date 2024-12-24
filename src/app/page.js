@@ -146,10 +146,10 @@ export default function Home() {
 					disabled={isRunning}
 				/>
 			</div>
-			<main className='flex flex-col gap-8 row-start-2 items-center justify-center bg-secondary/40 px-8 pt-16 pb-8 rounded-2xl border border-primary/10 shadow-xl'>
-				<div className='flex items-center gap-8 bg-background rounded-full'>
+			<main className='flex flex-col gap-8 row-start-2 items-center justify-center bg-card px-8 pt-16 pb-8 rounded-2xl border border-primary/10 shadow-xl'>
+				<div className='flex items-center gap-8 bg-card rounded-full'>
 					<motion.div
-						className='rounded-full w-[200px] h-[200px] leading-none flex items-center justify-center relative'
+						className='rounded-full w-[200px] h-[200px] leading-none flex items-center justify-center relative bg-background'
 						initial={{ opacity: 0, scale: 0 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{
@@ -159,7 +159,7 @@ export default function Home() {
 						}}
 					>
 						<svg
-							className='absolute inset-0 w-full h-full'
+							className='absolute inset-0 w-full h-full z-20'
 							viewBox='0 0 100 100'
 							xmlns='http://www.w3.org/2000/svg'
 						>
@@ -169,7 +169,7 @@ export default function Home() {
 								fill='none'
 								strokeWidth='6'
 								strokeLinecap='round'
-								stroke='hsl(var(--foreground))'
+								stroke='hsl(var(--primary))'
 								initial={{ pathLength: 1 }}
 							/>
 						</svg>
@@ -185,7 +185,7 @@ export default function Home() {
 								easing:
 									'linear(0, 0.0015, 0.0059 1.07%, 0.025, 0.0546 3.49%, 0.097 4.84%, 0.1958 7.39%, 0.4359 12.9%, 0.5465 15.58%, 0.6502 18.41%, 0.7351 21.09%, 0.8091, 0.8685 26.74%, 0.8942, 0.9164, 0.9356 31.17%, 0.9533 32.78%, 0.9781 35.74%, 0.9882 37.35%, 0.9967 39.1%, 1.0082 42.72%, 1.0142 47.02%, 1.0144 53.47%, 1.0054 68.38%, 1.0019 77.39%, 0.9998 99.96%)',
 							}}
-							className='text-7xl font-bold text-center font-mono'
+							className='text-7xl font-bold text-center font-mono relative z-20 text-card-foreground'
 						/>
 					</motion.div>
 				</div>

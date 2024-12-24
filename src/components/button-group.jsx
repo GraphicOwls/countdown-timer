@@ -24,28 +24,28 @@ export default function ButtonGroup({ currentValue, onValueChange }) {
 			}}
 		>
 			<ToggleGroupItem
-				className='bg-transparent border-none text-secondary-foreground/50 shadow-none hover:text-secondary-foreground rounded hover:bg-secondary focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
+				className='bg-transparent border-none text-muted-foreground shadow-none foreground rounded hover:bg-secondary/20 focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
 				aria-label='One Second'
 				value='1'
 			>
 				1s
 			</ToggleGroupItem>
 			<ToggleGroupItem
-				className='bg-transparent border-none text-secondary-foreground/50 shadow-none hover:text-secondary-foreground rounded hover:bg-secondary focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
+				className='bg-transparent border-none text-muted-foreground shadow-none foreground rounded hover:bg-secondary/20 focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
 				aria-label='Five Seconds'
 				value='5'
 			>
 				5s
 			</ToggleGroupItem>
 			<ToggleGroupItem
-				className='bg-transparent border-none text-secondary-foreground/50 shadow-none hover:text-secondary-foreground rounded hover:bg-secondary focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
+				className='bg-transparent border-none text-muted-foreground shadow-none foreground rounded hover:bg-secondary/20 focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
 				aria-label='Ten Seconds'
 				value='10'
 			>
 				10s
 			</ToggleGroupItem>
 			<ToggleGroupItem
-				className='bg-transparent border-none text-secondary-foreground/50 shadow-none hover:text-secondary-foreground rounded hover:bg-secondary focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
+				className='bg-transparent border-none text-muted-foreground shadow-none foreground rounded hover:bg-secondary/20 focus-visible:z-10 data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground p-0 py-1'
 				aria-label='Twenty Seconds'
 				value='20'
 			>
